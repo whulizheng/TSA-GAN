@@ -1,0 +1,47 @@
+{
+    "data": {
+        "archive_name": "",
+        "dataset_dir": "",
+        "dataset_name": "",
+        "output_dir": ""
+    },
+    "general": {
+        "version": "0.0.1.a100",
+        "task_code": "0001",
+        "model": "mcrgan",
+        "augmentation_method": "auto",
+        "keep_raw": true,
+        "model_collapse_monitor": true,
+        "save_training_information": true
+    },
+    "advanced": {
+        "optimizer": "Adam",
+        "optimizer_options": [
+            0.0002,
+            0.5
+        ],
+        "loss": "binary_crossentropy",
+        "G_network_layers": [
+            128,
+            512,
+            1024
+        ],
+        "D_network_layers": [
+            1024,
+            512,
+            64
+        ],
+        "G_activation": "LeakyReLU",
+        "D_activation": "LeakyReLU",
+        "generator_batchnormalization": true,
+        "generator_batchnormalization_momentum": 0.8,
+        "discriminator_batchnormalization": true,
+        "discriminator_batchnormalization_momentum": 0.8,
+        "batchsize": 16,
+        "epochs": 1000,
+        "model_collect_num": 3,
+        "dims": 32,
+        "model_collapse_edge": 20,
+        "sampling_frequency": 20
+    }
+}

@@ -1,0 +1,15 @@
+batchsize = 64
+epochs = 2000
+dims = 64
+optimizer = "Adam"
+optimizer_options = [0.0002, 0.5]
+loss = 'binary_crossentropy'
+generator_dense = [128, 512, 1024]  # 额外还有一层来固定形状
+generator_activation = 'LeakyReLU'
+generator_activation_alpha = 0.2
+generator_batchnormalization = 1
+generator_batchnormalization_momentum = 0.8
+discriminator_dense = [1024, 512, 64]  # 额外还有一层 1
+discriminator_activation = 'LeakyReLU'
+discriminator_activation_alpha = 0.2
+model_collapse_edge = 500

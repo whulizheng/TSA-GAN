@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>GAN配置</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- js -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<!-- radio-buttons -->
+	<link rel="stylesheet" href="css/sky-forms.css">
+	<!-- //radio-buttons -->
+	<link href="css/css-family=Raleway-400,100,200,300,500,600,700,900,800.css" rel='stylesheet' type='text/css'>
+	<link href="css/css-family=Open+Sans-400,300,300italic,400italic,600,600italic,700,700italic,800,800italic.css"
+		rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<!-- ui-kit -->
+	<div class="ui-kit">
+		<div class="container">
+			<h1><i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i> GAN<span>配置</span></h1>
+			<h2 style="font-size: larger;">版本<span>0.0.1.a100</span></h2>
+			<div class="ui-kit-grids">
+				<div class="col-md-6 ui-kit-grid-left">
+					<div class="login-form">
+						<h2>选择数据</h2>
+						<select
+							onchange="if (this.value == '自行上传') {document.getElementById('upload_file_id').style.display='inline';}else{document.getElementById('upload_file_id').style.display='none';}"
+							id=general_model>
+							<option value="Adiac">Adiac</option>
+							<option value="ArrowHead">ArrowHead</option>
+							<option value="ArrowHead">50words</option>
+							<option value="ArrowHead">ECG200</option>
+							<option value="ArrowHead">ECG5000</option>
+							<option value="自行上传">自行上传</option>
+
+
+						</select>
+						<input style="display:none; " accept=".zip" type="file" id="upload_file_id" />
+						<!--form id = data>
+								<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+								<input type="email" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+							</form-->
+						<h2>选择模型</h2>
+						<select id=general_model>
+							<option value="volvo">GAN</option>
+							<option value="saab">dcGAN</option>
+						</select>
+						<div class="ckeck-bg">
+							<div class="checkbox-form">
+								<div class="check-left">
+									<div class="check">
+										<label class="checkbox"><input type="checkbox" name="checkbox"
+												aria-checked="false"><i>
+											</i>保留原始数据</label>
+									</div>
+								</div>
+								<div class="check-right">
+									<div class="check">
+										<label class="checkbox"><input type="checkbox" name="checkbox"
+												aria-checked="false"><i>
+											</i>保存训练信息</label>
+									</div>
+								</div>
+								<div class="check-right">
+									<div class="check">
+										<label class="checkbox"><input aria-checked="false"
+												onchange="if(this.checked){document.getElementById('advanced_1').style.display='inline';document.getElementById('advanced_2').style.display='inline';}else{document.getElementById('advanced_1').style.display='none';document.getElementById('advanced_2').style.display='none';}"
+												type="checkbox" name="checkbox"><i> </i>高级设置</label>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div id='advanced_1' style="display: none;">
+							<div class="sky-form">
+								<div class="row">
+									<h2 style="font: 100;">选择优化器和参数</h2>
+									<div class="colr ert">
+										<label class="radio"><input type="checkbox" name="优化器" aria-checked="false"
+												onchange="if(this.checked){document.getElementById('Adam').style.display='inline';}else{document.getElementById('Adam').style.display='none';}">
+											<i></i>Adam</label>
+										<div style="display: none;" id='Adam'>
+											<input value='β1' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β1';}"
+												style="margin-top:1em;">
+											<input value='β2' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β2';}"
+												style="margin-top:1em;">
+										</div>
+										<label class="radio"><input type="checkbox" name="优化器" aria-checked="false"
+												onchange="if(this.checked){document.getElementById('NAG').style.display='inline';}else{document.getElementById('NAG').style.display='none';}">
+											<i></i>NAG</label>
+										<div style="display: none;" id='NAG'>
+											<input value='β1' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β1';}"
+												style="margin-top:1em;">
+											<input value='β2' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β2';}"
+												style="margin-top:1em;">
+										</div>
+										<label class="radio"><input type="checkbox" name="优化器" aria-checked="false"
+												onchange="if(this.checked){document.getElementById('AdaGrad').style.display='inline';}else{document.getElementById('AdaGrad').style.display='none';}">
+											<i></i>AdaGrad</label>
+										<div style="display: none;" id='AdaGrad'>
+											<input value='β1' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β1';}"
+												style="margin-top:1em;">
+											<input value='β2' onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = 'β2';}"
+												style="margin-top:1em;">
+										</div>
+									</div>
+								</div>
+							</div>
+							<h2>选择损失函数</h2>
+							<div class="sky-form">
+								<div class="row">
+									<div class="colr ert">
+										<label class="radio"><input type="radio" name="损失函数" checked="">
+											<i></i>binary_crossentropy</label><br />
+										<label class="radio"><input type="radio" name="损失函数" checked="">
+											<i></i>hinge </label><br />
+										<label class="radio"><input type="radio" name="损失函数" checked="">
+											<i></i>squared_hinge </label><br />
+									</div>
+								</div>
+							</div>
+							<h2>批量正则化</h2>
+							<div class="sky-form">
+								<label class="radio"><input type="checkbox" name="批量正则化" aria-checked="false"
+										onchange="if(this.checked){document.getElementById('batchnormalization').style.display='inline';}else{document.getElementById('batchnormalization').style.display='none';}">
+									<i></i>batchnormalization</label>
+								<div style="display: none;" id='batchnormalization'>
+									<input value='0.8' onfocus="this.value = '';"
+										onblur="if (this.value == '') {this.value = 'β1';}" style="margin-top:1em;">
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+				<div class="col-md-6 ui-kit-grid-right">
+					<div style="display: none;" id='advanced_2'>
+						<div class="login-form ui-kit">
+
+							<ul class="row">
+								<h2>批大小，epoch，噪音维度</h2>
+								<span><input type="text" value="32"><input type="text" value="2000"><input type="text"
+										value="64"></span>
+
+							</ul>
+
+							<div class="row">
+								<h2>生成器网络结构</h2>
+								<input type="text" value="64,128,512,1024">
+								<h2>鉴别器网络结构</h2>
+								<input type="text" value="1024,512,128,64">
+							</div>
+
+						</div>
+					</div>
+
+					<div class="clearfix"> </div>
+
+					<div class="upload">
+						<h2>剩余可用空间</h2>
+						<div class="diagram">
+							<canvas id="doughnut" height="300" width="300"></canvas>
+							<h4>90%</h4>
+						</div>
+					</div>
+					<br /><br /><br />
+					<div class="login-form">
+						<form>
+							<div onclick="window.location.href='html/status.html';return false">
+								<input type="submit" value="提交">
+							</div>
+
+						</form>
+					</div>
+					<script type="text/javascript" src="js/Chart.js"></script>
+					<script>
+						var doughnutData = [
+							{
+								value: 10,
+								color: "#264e4e"
+							},
+							{
+								value: 90,
+								color: "#fff"
+							}
+
+						];
+
+						new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);						
+					</script>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="timothy-and-icons">
+				<div class="timothy-and-icons-left">
+					<div class="bird-text-grid-right">
+						<h2>用户：李政 </h2>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="timothy-and-icons-right">
+					<ul>
+						<li><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 保存图片 </li>
+
+						<li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 任务日历 </li>
+						<li><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> 更多选项 </li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="timothy-and-family">
+				<div class="timothy-and-family-left">
+
+					<h3><span>30</span>七月</h3>
+					<h4><span>29</span>六月</h4>
+				</div>
+				<div class="timothy-and-family-right">
+					<p class="timeline">我的任务日志</p>
+					<div class="timothy-and-family-right-timothy">
+						<div class="bird-text-grid-left ind">
+						</div>
+						<div class="bird-text-grid-right ind1">
+							<h2>任务日志</h2>
+							<p>任务日志</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="figure-figure">
+						<h3>任务日志</h3>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="footer-bottom">
+				<p>Copyright © 2020 没有Copyright </p>
+			</div>
+		</div>
+	</div>
+	<!-- //ui-kit -->
+</body>
+
+</html>
